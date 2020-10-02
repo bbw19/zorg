@@ -14,6 +14,8 @@ public class Zork2 {
 	 * Hauptprogramm des Zork Game
 	 */
 	public static void main(String[] args) {
+		Command.InitialzeValidCommands();
+
 		Game zorkgame = new Game();
 		zorkgame.play();
 	}
