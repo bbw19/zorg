@@ -43,21 +43,10 @@
       <module name="4_3_zork" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="zork.*" />
+          <option name="PATTERN" value="zork.Commands.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -66,7 +55,7 @@
       <module name="4_3_zork" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="zork.*" />
+          <option name="PATTERN" value="zork.Commands.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -93,7 +82,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1601642266844</updated>
-      <workItem from="1601642268927" duration="6640000" />
+      <workItem from="1601642268927" duration="8055000" />
+      <workItem from="1602055811598" duration="636000" />
     </task>
     <servers />
   </component>
@@ -113,22 +103,22 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="765" y="246" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1080@0.0.1920.1080" timestamp="1601648530142" />
-    <state width="1877" height="194" key="GridCell.Tab.0.bottom" timestamp="1601648687339">
+    <state width="1877" height="194" key="GridCell.Tab.0.bottom" timestamp="1601652556718">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="194" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1601648687339" />
-    <state width="1877" height="194" key="GridCell.Tab.0.center" timestamp="1601648687337">
+    <state width="1877" height="194" key="GridCell.Tab.0.bottom/0.0.1920.1080@0.0.1920.1080" timestamp="1601652556718" />
+    <state width="1877" height="194" key="GridCell.Tab.0.center" timestamp="1601652556717">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="194" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1601648687337" />
-    <state width="1877" height="194" key="GridCell.Tab.0.left" timestamp="1601648687336">
+    <state width="1877" height="194" key="GridCell.Tab.0.center/0.0.1920.1080@0.0.1920.1080" timestamp="1601652556717" />
+    <state width="1877" height="194" key="GridCell.Tab.0.left" timestamp="1601652556717">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="194" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1601648687336" />
-    <state width="1877" height="194" key="GridCell.Tab.0.right" timestamp="1601648687338">
+    <state width="1877" height="194" key="GridCell.Tab.0.left/0.0.1920.1080@0.0.1920.1080" timestamp="1601652556717" />
+    <state width="1877" height="194" key="GridCell.Tab.0.right" timestamp="1601652556717">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state width="1877" height="194" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1601648687338" />
+    <state width="1877" height="194" key="GridCell.Tab.0.right/0.0.1920.1080@0.0.1920.1080" timestamp="1601652556717" />
     <state x="461" y="184" key="SettingsEditor" timestamp="1601642330834">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>

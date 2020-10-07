@@ -1,4 +1,7 @@
-package zork;
+package zork.Commands;
+
+import zork.Command;
+import zork.Game;
 
 public class CommandQuit implements ICommandRunner {
     @Override

@@ -1,4 +1,6 @@
-package zork;
+package zork.Commands;
+
+import zork.Command;
 
 public interface ICommandRunner {
     String GetCommandName();

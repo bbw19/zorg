@@ -1,4 +1,7 @@
-package zork;
+package zork.Commands;
+
+import zork.Command;
+import zork.Room;
 
 import static zork.Game.currentRoom;
 

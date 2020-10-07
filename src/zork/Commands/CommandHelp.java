@@ -1,4 +1,6 @@
-package zork;
+package zork.Commands;
+
+import zork.Command;
 
 public class CommandHelp implements ICommandRunner {
     @Override
