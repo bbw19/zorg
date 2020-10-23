@@ -82,7 +82,7 @@ public class Game {
     private void generateRooms(){
         int middle = Math.floorDiv((int) Math.sqrt(MapSize), 2);
 
-        int maxRooms = 15;
+        int maxRooms = 10;
         int rooms = 1;
 
         currentRoom = new Room("Starter Room", new Vector2(middle, middle));
@@ -138,46 +138,58 @@ public class Game {
     }
 
     private int tryGenerateAround(Vector2 pos, int maxRooms, ArrayList<Vector2> roomPoses){
+        Random rand = new Random();
+
         int added = 0;
 
         if (added >= maxRooms){
             return added;
         }
 
-        Vector2 newPos = new Vector2(pos.x + 1, pos.y);
-        if (tryGenerateRoom(newPos)) {
-            added++;
-            roomPoses.add(newPos);
+        Vector2 newPos;
+
+        if (rand.nextBoolean()) {
+            newPos = new Vector2(pos.x + 1, pos.y);
+            if (tryGenerateRoom(newPos)) {
+                added++;
+                roomPoses.add(newPos);
+            }
         }
 
         if (added >= maxRooms){
             return added;
         }
 
-        newPos = new Vector2(pos.x, pos.y + 1);
-        if (tryGenerateRoom(newPos)) {
-            added++;
-            roomPoses.add(newPos);
+        if (rand.nextBoolean()) {
+            newPos = new Vector2(pos.x, pos.y + 1);
+            if (tryGenerateRoom(newPos)) {
+                added++;
+                roomPoses.add(newPos);
+            }
         }
 
         if (added >= maxRooms){
             return added;
         }
 
-        newPos = new Vector2(pos.x - 1, pos.y);
-        if (tryGenerateRoom(newPos)) {
-            added++;
-            roomPoses.add(newPos);
+        if (rand.nextBoolean()) {
+            newPos = new Vector2(pos.x - 1, pos.y);
+            if (tryGenerateRoom(newPos)) {
+                added++;
+                roomPoses.add(newPos);
+            }
         }
 
         if (added >= maxRooms){
             return added;
         }
 
-        newPos = new Vector2(pos.x, pos.y - 1);
-        if (tryGenerateRoom(newPos)) {
-            added++;
-            roomPoses.add(newPos);
+        if (rand.nextBoolean()) {
+            newPos = new Vector2(pos.x, pos.y - 1);
+            if (tryGenerateRoom(newPos)) {
+                added++;
+                roomPoses.add(newPos);
+            }
         }
 
         return added;

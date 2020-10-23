@@ -3,9 +3,13 @@ package zork.Commands;
 import zork.Command;
 import zork.Room;
 
+import java.util.ArrayList;
+
 import static zork.Game.currentRoom;
 
 public class CommandGo implements ICommandRunner {
+    public static ArrayList<String> actions = new ArrayList<>();
+
     @Override
     public String GetCommandName() {
         return "go";
@@ -29,6 +33,7 @@ public class CommandGo implements ICommandRunner {
             return;
         }
 
+        actions.add(command.getSecondWord());
         currentRoom = nextRoom;
         System.out.println(currentRoom.longDescription());
     }

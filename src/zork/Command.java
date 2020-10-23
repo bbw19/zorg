@@ -42,6 +42,7 @@ public class Command {
 		validCommands.add(new CommandMap());
 		validCommands.add(new CommandUseKey());
 		validCommands.add(new CommandPickup());
+		validCommands.add(new CommandBack());
 	}
 
 	/**
