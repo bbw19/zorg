@@ -40,11 +40,13 @@ public class Map {
     }
 
     private String NoRoom(int roomWidth){
-        String output = "";
+        String output = Color.ANSI_CYAN.getColor();
 
         for (int i = 0; i < roomWidth; i++){
             output += "o";
         }
+
+        output += Color.ANSI_WHITE.getColor();
 
         return output;
     }
@@ -52,35 +54,36 @@ public class Map {
     private String DrawRoom(int roomWidth, int roomHeight, int height, boolean IsActualRoom){
         StringBuilder output = new StringBuilder();
 
+        output.append(Color.ANSI_YELLOW.getColor());
+
         if (height == 0 || height == roomHeight - 1){
             for (int i = 0; i < roomWidth; i++){
                 output.append("-");
             }
+
+            output.append(Color.ANSI_WHITE.getColor());
 
             return output.toString();
         }
 
         output.append("|");
 
+        output.append(Color.ANSI_RED.getColor());
+
         for (int i = 0; i < roomWidth - 2; i++){
             if (IsActualRoom){
-                if(i == 0){
-                    output.append(Color.ANSI_RED.getColor());
-                }
-                if(i == roomWidth - 3) {
-                    output.append(Color.ANSI_WHITE.getColor());
-                }
-                else {
-                    output.append("X");
-                }
-                
+                output.append("X");
             }
             else {
                 output.append(" ");
             }
         }
 
+        output.append(Color.ANSI_YELLOW.getColor());
+
         output.append("|");
+
+        output.append(Color.ANSI_WHITE.getColor());
 
         return output.toString();
     }
