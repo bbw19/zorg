@@ -1,5 +1,9 @@
 package zork;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 /**
  * Class Game - the main class of the "Zork" game.
  * <p>
@@ -25,20 +29,23 @@ public class Game {
 
     public static boolean hasFinished = false;
 
+    public static int MapSize = 36;
+
     /**
      * Create the game and initialise its internal map.
      */
     public Game() {
 
         // Create all the rooms and link their exits together.
-        Room outside = new Room("outside G block on Peninsula campus", new Vector2(1, 1));
-        new Room("a lecture theatre in A block", new Vector2(2, 1));
-        new Room("the Seahorse Tavern (the campus pub)", new Vector2(0, 1));
-        new Room("the G building", new Vector2(1, 0));
-        new Room("the computing admin office", new Vector2(0, 0));
+        //Room outside = new Room("outside G block on Peninsula campus", new Vector2(1, 1));
+        //new Room("a lecture theatre in A block", new Vector2(2, 1));
+        //new Room("the Seahorse Tavern (the campus pub)", new Vector2(0, 1));
+        //new Room("the G building", new Vector2(1, 0));
+        //new Room("the computing admin office", new Vector2(0, 0));
 
-        currentRoom = outside; // start game outside
+        //currentRoom = outside; // start game outside
 
+        generateRooms();
     }
 
 
@@ -68,5 +75,92 @@ public class Game {
         System.out.println("Type 'help' if you need help.");
         System.out.println();
         System.out.println(currentRoom.longDescription());
+    }
+
+    private void generateRooms(){
+        int middle = Math.floorDiv((int) Math.sqrt(MapSize), 2);
+
+        int maxRooms = 15;
+        int rooms = 1;
+
+        currentRoom = new Room("Starter Room", new Vector2(middle, middle));
+
+        ArrayList<Vector2> roomPoses = new ArrayList<>();
+
+        roomPoses.add(new Vector2(middle, middle));
+
+        while (rooms < maxRooms){
+            Vector2 pos = getRandomRoomPos(roomPoses);
+
+            rooms += tryGenerateAround(pos, maxRooms - rooms, roomPoses);
+        }
+    }
+
+    private Vector2 getRandomRoomPos(ArrayList<Vector2> roomPoses){
+        Random random = new Random();
+        int rand = random.nextInt(roomPoses.toArray().length);
+
+        return roomPoses.get(rand);
+    }
+
+    private int tryGenerateAround(Vector2 pos, int maxRooms, ArrayList<Vector2> roomPoses){
+        int added = 0;
+
+        if (added >= maxRooms){
+            return added;
+        }
+
+        Vector2 newPos = new Vector2(pos.x + 1, pos.y);
+        if (tryGenerateRoom(newPos)) {
+            added++;
+            roomPoses.add(newPos);
+        }
+
+        if (added >= maxRooms){
+            return added;
+        }
+
+        newPos = new Vector2(pos.x, pos.y + 1);
+        if (tryGenerateRoom(newPos)) {
+            added++;
+            roomPoses.add(newPos);
+        }
+
+        if (added >= maxRooms){
+            return added;
+        }
+
+        newPos = new Vector2(pos.x - 1, pos.y);
+        if (tryGenerateRoom(newPos)) {
+            added++;
+            roomPoses.add(newPos);
+        }
+
+        if (added >= maxRooms){
+            return added;
+        }
+
+        newPos = new Vector2(pos.x, pos.y - 1);
+        if (tryGenerateRoom(newPos)) {
+            added++;
+            roomPoses.add(newPos);
+        }
+
+        return added;
+    }
+
+    private boolean tryGenerateRoom(Vector2 pos){
+        int mapLength = (int) Math.sqrt(MapSize);
+
+        if (pos.x < 0 || pos.x >= mapLength || pos.y < 0 || pos.y >= mapLength){
+            return false;
+        }
+
+        if (Room.Rooms.containsKey(pos)){
+            return false;
+        }
+
+        new Room("Normal Room", pos);
+        return true;
     }
 }
