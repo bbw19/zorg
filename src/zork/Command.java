@@ -41,6 +41,7 @@ public class Command {
 		//validCommands.add(new CommandTest());
 		validCommands.add(new CommandMap());
 		validCommands.add(new CommandUseKey());
+		validCommands.add(new CommandPickup());
 	}
 
 	/**

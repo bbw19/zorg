@@ -21,7 +21,8 @@ public class Room {
 	public static HashMap<Vector2, Room> Rooms = new HashMap<>();
 
 	public boolean IsFinishRoom = false;
-	
+	public boolean HasKey = false;
+
 	private String description;
 	private Vector2 RoomPos;
 
@@ -91,6 +92,28 @@ public class Room {
 			default:
 				return null;
 		}
+	}
+
+	public static Room getFinishRoom(){
+		for (Room room :
+				Room.getRooms().values()) {
+			if (room.IsFinishRoom){
+				return room;
+			}
+		}
+
+		return null;
+	}
+
+	public static Room getKeyRoom(){
+		for (Room room :
+				Room.getRooms().values()) {
+			if (room.HasKey){
+				return room;
+			}
+		}
+
+		return null;
 	}
 
 	public static HashMap<Vector2, Room> getRooms() {

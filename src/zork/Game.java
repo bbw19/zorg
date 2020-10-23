@@ -29,6 +29,8 @@ public class Game {
 
     public static boolean hasFinished = false;
 
+    public static boolean playerHasKey = false;
+
     public static int MapSize = 25;
 
     /**
@@ -110,10 +112,20 @@ public class Game {
             }
         }
 
-        for (Room room :
-                Room.getRooms().values()) {
-            if (room.IsFinishRoom) {
-                System.out.println(room.getPos().x + " " + room.getPos().y);
+        repeat = true;
+
+        while (repeat){
+            Random random = new Random();
+            int roomInt = random.nextInt(maxRooms);
+
+            Vector2 vector2 = roomPoses.get(roomInt);
+
+            if (!currentRoom.getPos().equals(vector2) && !Room.getFinishRoom().getPos().equals(vector2)) {
+
+                Room room = Room.Rooms.get(roomPoses.get(roomInt));
+                room.HasKey = true;
+
+                repeat = false;
             }
         }
     }

@@ -13,20 +13,9 @@ public class CommandUseKey implements ICommandRunner {
 
     @Override
     public void RunCommand(Command command) {
-        if (Game.currentRoom.equals(getGoalRoom())){
+        if (Game.currentRoom.equals(Room.getFinishRoom()) && Game.playerHasKey){
             System.out.println(Color.ANSI_RED.getColor() + "You WON!!!");
             Game.hasFinished = true;
         }
-    }
-
-    private Room getGoalRoom(){
-        for (Room room :
-                Room.getRooms().values()) {
-            if (room.IsFinishRoom){
-                return room;
-            }
-        }
-
-        return null;
     }
 }

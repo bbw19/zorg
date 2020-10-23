@@ -6,7 +6,6 @@ import java.util.HashMap;
 public class Map {
     private Room initialRoom;
     private int fieldSize;
-    private Vector2[] wholeField;
     private int roomWidth = 7;
     private int roomHeight = 3;
     private HashMap<Vector2, Room> allRooms;
@@ -25,8 +24,10 @@ public class Map {
         for (int i = sqrt - 1; i >= 0; i--){
             for (int k = 0; k < roomHeight; k++){
                 for (int j = 0; j < sqrt; j++){
-                    if (allRooms.containsKey(new Vector2(j, i))) {
-                        map += DrawRoom(roomWidth, roomHeight, k, initialRoom.getPos().equals(new Vector2(j, i)), allRooms.get(new Vector2(j, i)).IsFinishRoom);
+                    Vector2 vector2 = new Vector2(j, i);
+
+                    if (allRooms.containsKey(vector2)) {
+                        map += DrawRoom(roomWidth, roomHeight, k, initialRoom.getPos().equals(vector2), allRooms.get(vector2).IsFinishRoom, allRooms.get(vector2).HasKey);
                     } else {
                         map += NoRoom(roomWidth);
                     }
@@ -51,7 +52,7 @@ public class Map {
         return output;
     }
 
-    private String DrawRoom(int roomWidth, int roomHeight, int height, boolean IsActualRoom, boolean isFinishRoom){
+    private String DrawRoom(int roomWidth, int roomHeight, int height, boolean IsActualRoom, boolean isFinishRoom, boolean hasKey){
         StringBuilder output = new StringBuilder();
 
         String roomColor;
@@ -77,10 +78,15 @@ public class Map {
 
         output.append("|");
 
-        output.append(Color.ANSI_RED.getColor());
+        if (hasKey && !IsActualRoom){
+            output.append(Color.ANSI_YELLOW.getColor());
+        }
+        else {
+            output.append(Color.ANSI_RED.getColor());
+        }
 
         for (int i = 0; i < roomWidth - 2; i++){
-            if (IsActualRoom){
+            if (IsActualRoom || hasKey){
                 output.append("X");
             }
             else {
