@@ -7,7 +7,7 @@ public class Map {
     private Room initialRoom;
     private int fieldSize;
     private Vector2[] wholeField;
-    private int roomWidth = 6;
+    private int roomWidth = 7;
     private int roomHeight = 3;
     private HashMap<Vector2, Room> allRooms;
 
@@ -26,7 +26,7 @@ public class Map {
             for (int k = 0; k < roomHeight; k++){
                 for (int j = 0; j < sqrt; j++){
                     if (allRooms.containsKey(new Vector2(j, i))) {
-                        map += DrawRoom(roomWidth, roomHeight, k, initialRoom.getPos().equals(new Vector2(j, i)));
+                        map += DrawRoom(roomWidth, roomHeight, k, initialRoom.getPos().equals(new Vector2(j, i)), allRooms.get(new Vector2(j, i)).IsFinishRoom);
                     } else {
                         map += NoRoom(roomWidth);
                     }
@@ -51,10 +51,19 @@ public class Map {
         return output;
     }
 
-    private String DrawRoom(int roomWidth, int roomHeight, int height, boolean IsActualRoom){
+    private String DrawRoom(int roomWidth, int roomHeight, int height, boolean IsActualRoom, boolean isFinishRoom){
         StringBuilder output = new StringBuilder();
 
-        output.append(Color.ANSI_YELLOW.getColor());
+        String roomColor;
+
+        if (isFinishRoom){
+            roomColor = Color.ANSI_BLUE.getColor();
+        }
+        else {
+            roomColor = Color.ANSI_YELLOW.getColor();
+        }
+
+        output.append(roomColor);
 
         if (height == 0 || height == roomHeight - 1){
             for (int i = 0; i < roomWidth; i++){
@@ -79,7 +88,7 @@ public class Map {
             }
         }
 
-        output.append(Color.ANSI_YELLOW.getColor());
+        output.append(roomColor);
 
         output.append("|");
 

@@ -40,6 +40,7 @@ public class Command {
 		validCommands.add(new CommandQuit());
 		//validCommands.add(new CommandTest());
 		validCommands.add(new CommandMap());
+		validCommands.add(new CommandUseKey());
 	}
 
 	/**

@@ -29,7 +29,7 @@ public class Game {
 
     public static boolean hasFinished = false;
 
-    public static int MapSize = 36;
+    public static int MapSize = 25;
 
     /**
      * Create the game and initialise its internal map.
@@ -93,6 +93,28 @@ public class Game {
             Vector2 pos = getRandomRoomPos(roomPoses);
 
             rooms += tryGenerateAround(pos, maxRooms - rooms, roomPoses);
+        }
+
+        boolean repeat = true;
+
+        while (repeat){
+            Random random = new Random();
+            int roomInt = random.nextInt(maxRooms);
+
+            if (!currentRoom.getPos().equals(roomPoses.get(roomInt))) {
+
+                Room room = Room.Rooms.get(roomPoses.get(roomInt));
+                room.IsFinishRoom = true;
+
+                repeat = false;
+            }
+        }
+
+        for (Room room :
+                Room.getRooms().values()) {
+            if (room.IsFinishRoom) {
+                System.out.println(room.getPos().x + " " + room.getPos().y);
+            }
         }
     }
 

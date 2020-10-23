@@ -19,6 +19,8 @@ import java.util.HashMap;
 public class Room {
 
 	public static HashMap<Vector2, Room> Rooms = new HashMap<>();
+
+	public boolean IsFinishRoom = false;
 	
 	private String description;
 	private Vector2 RoomPos;
