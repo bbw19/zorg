@@ -64,7 +64,16 @@ public class Map {
 
         for (int i = 0; i < roomWidth - 2; i++){
             if (IsActualRoom){
-                output.append("X");
+                if(i == 0){
+                    output.append(Color.ANSI_RED.getColor());
+                }
+                if(i == roomWidth - 3) {
+                    output.append(Color.ANSI_WHITE.getColor());
+                }
+                else {
+                    output.append("X");
+                }
+                
             }
             else {
                 output.append(" ");
