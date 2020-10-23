@@ -38,7 +38,7 @@ public class Command {
 		validCommands.add(new CommandGo());
 		validCommands.add(new CommandHelp());
 		validCommands.add(new CommandQuit());
-		validCommands.add(new CommandTest());
+		//validCommands.add(new CommandTest());
 		validCommands.add(new CommandMap());
 	}
 

@@ -31,11 +31,11 @@ public class Game {
     public Game() {
 
         // Create all the rooms and link their exits together.
-        Room outside = new Room("outside G block on Peninsula campus", new Vector2(0, 0));
-        new Room("a lecture theatre in A block", new Vector2(1, 0));
-        new Room("the Seahorse Tavern (the campus pub)", new Vector2(-1, 0));
-        new Room("the G building", new Vector2(0, -1));
-        new Room("the computing admin office", new Vector2(-1, -1));
+        Room outside = new Room("outside G block on Peninsula campus", new Vector2(1, 1));
+        new Room("a lecture theatre in A block", new Vector2(2, 1));
+        new Room("the Seahorse Tavern (the campus pub)", new Vector2(0, 1));
+        new Room("the G building", new Vector2(1, 0));
+        new Room("the computing admin office", new Vector2(0, 0));
 
         currentRoom = outside; // start game outside
 

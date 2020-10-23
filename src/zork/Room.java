@@ -91,7 +91,7 @@ public class Room {
 		}
 	}
 
-	public HashMap<Vector2, Room> getRooms() {
+	public static HashMap<Vector2, Room> getRooms() {
 		return Rooms;
 	}
 

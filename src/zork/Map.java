@@ -14,47 +14,65 @@ public class Map {
     public Map(Room initialRoom, int fieldSize) {
         this.initialRoom = initialRoom;
         this.fieldSize = fieldSize;
-        this.allRooms = initialRoom.getRooms();
+        this.allRooms = Room.getRooms();
     }
 
     public void drawMap() {
         int sqrt = (int) Math.sqrt(fieldSize);
 
-        for(int i = 0; i < sqrt; i++) {
-            int xVal = ( (sqrt-1) /2 ) - i;
+        String map = "";
 
-            for(int q = 0; q < roomHeight; q++) {
-
-                for(int j = 0; j < sqrt; j++) {
-                    int yVal = ( (sqrt-1) /2 ) - j;
-                    yVal *= -1;
-
-                    for(int p = 0; p < roomWidth; p++) {
-
-                        if(allRooms.containsKey(new Vector2(yVal, xVal))) {
-                            if(q == 0 || q == roomHeight-1) {
-                                System.out.print("-");
-                            } else {
-                                if (p == 0 || p == roomWidth -1) {
-                                    System.out.print("|");
-                                } else {
-                                    if ( initialRoom.getPos().equals(new Vector2(yVal, xVal))) {
-                                        System.out.print(Color.ANSI_RED.getColor() + "X" + Color.ANSI_WHITE.getColor());
-                                    } else {
-                                        System.out.print(" ");
-                                    }
-                                }
-                            }
-                        } else{
-                            System.out.print("o");
-                        }
+        for (int i = sqrt - 1; i >= 0; i--){
+            for (int k = 0; k < roomHeight; k++){
+                for (int j = 0; j < sqrt; j++){
+                    if (allRooms.containsKey(new Vector2(j, i))) {
+                        map += DrawRoom(roomWidth, roomHeight, k, initialRoom.getPos().equals(new Vector2(j, i)));
+                    } else {
+                        map += NoRoom(roomWidth);
                     }
-                    System.out.print(" ");
-                } 
-                System.out.println();
+                    map += " ";
+                }
+                map += System.lineSeparator();
             }
         }
+
+        System.out.println(map);
     }
 
+    private String NoRoom(int roomWidth){
+        String output = "";
 
+        for (int i = 0; i < roomWidth; i++){
+            output += "o";
+        }
+
+        return output;
+    }
+
+    private String DrawRoom(int roomWidth, int roomHeight, int height, boolean IsActualRoom){
+        StringBuilder output = new StringBuilder();
+
+        if (height == 0 || height == roomHeight - 1){
+            for (int i = 0; i < roomWidth; i++){
+                output.append("-");
+            }
+
+            return output.toString();
+        }
+
+        output.append("|");
+
+        for (int i = 0; i < roomWidth - 2; i++){
+            if (IsActualRoom){
+                output.append("X");
+            }
+            else {
+                output.append(" ");
+            }
+        }
+
+        output.append("|");
+
+        return output.toString();
+    }
 }
